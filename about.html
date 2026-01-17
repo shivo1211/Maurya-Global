@@ -15,10 +15,14 @@
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 
-    <!-- Preload critical resources -->
+    <!-- Preload critical resources (highest priority) -->
     <link rel="preload" href="css/global.css" as="style">
     <link rel="preload" href="css/about.css" as="style">
-    <link rel="preload" href="assets/logo/logo.png" as="image">
+    <link rel="preload" href="assets/logo/logo.png" as="image" type="image/png">
+    <!-- Preload fonts for faster text rendering -->
+    <link rel="preload"
+        href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZ9hjp-Ek-_EeA.woff2"
+        as="font" type="font/woff2" crossorigin>
 
     <!-- Critical CSS for above-the-fold content -->
     <style>
@@ -112,15 +116,26 @@
             }
         }
     </style>
-
-    <!-- Fonts with display swap for non-blocking load -->
+    <!-- Fonts - non-blocking with preload -->
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap"
+        as="style">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap"
-        rel="stylesheet">
+        rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap"
+            rel="stylesheet">
+    </noscript>
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/about.css">
+    <!-- CSS - Non-blocking loading with fallback -->
+    <link rel="stylesheet" href="css/global.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/about.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/about.css">
+    </noscript>
 </head>
 
 <body>
@@ -326,7 +341,7 @@
     <div id="footer-placeholder"></div>
 
     <!-- Component Loader -->
-    <script src="js/components.js"></script>
+    <script src="js/components.js" defer></script>
 </body>
 
 </html>
