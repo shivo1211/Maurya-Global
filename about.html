@@ -9,9 +9,111 @@
     <meta name="keywords" content="about Maurya Global, Indian export company, agricultural exports, quality assurance">
     <title>About Us - Maurya Global</title>
 
-    <!-- Fonts -->
+    <!-- Preconnect for faster external resource loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="css/global.css" as="style">
+    <link rel="preload" href="css/about.css" as="style">
+    <link rel="preload" href="assets/logo/logo.png" as="image">
+
+    <!-- Critical CSS for above-the-fold content -->
+    <style>
+        /* Critical inline styles for immediate header render */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            padding-top: 85px;
+        }
+
+        header {
+            background: rgba(254, 254, 254, 0.95);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            height: 65px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 500;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #1a5f3f 0%, #134030 100%);
+            color: white;
+        }
+
+        @media (max-width: 576px) {
+            body {
+                padding-top: 130px;
+            }
+
+            nav {
+                flex-direction: column;
+                padding: 1rem 5%;
+                gap: 0.8rem;
+            }
+
+            .logo {
+                height: 50px;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: space-between;
+                gap: 0.3rem;
+            }
+
+            .nav-links a {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+
+    <!-- Fonts with display swap for non-blocking load -->
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap"
         rel="stylesheet">
@@ -22,8 +124,21 @@
 </head>
 
 <body>
-    <!-- Header Placeholder -->
-    <div id="header-placeholder"></div>
+    <!-- Header - Inlined for immediate render -->
+    <header id="header">
+        <nav>
+            <a href="index.html" class="logo-link">
+                <img src="assets/logo/logo.png" alt="Maurya Global Logo" class="logo" fetchpriority="high">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" id="nav-home">Home</a></li>
+                <li><a href="products.html" id="nav-products">Products</a></li>
+                <li><a href="about.html" id="nav-about" class="active">About Us</a></li>
+                <li><a href="#contact" class="btn btn-primary" style="color: white;">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="header-placeholder" style="display:none;"></div>
 
     <!-- About Hero -->
     <section class="about-hero">
@@ -65,7 +180,8 @@
                 </p>
             </div>
             <div class="story-image">
-                <img src="assets/products/basmati-rice.png" alt="Maurya Global Heritage">
+                <img src="assets/products/basmati-rice.png" alt="Maurya Global Heritage" loading="lazy"
+                    decoding="async">
             </div>
         </div>
     </section>
@@ -206,10 +322,11 @@
         </div>
     </section>
 
-    <!-- Footer Placeholder -->`n <div id="footer-placeholder"></div>
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
 
-    <!-- Component Loader -->`n
-    <script src="js/components.js"></script>`n
+    <!-- Component Loader -->
+    <script src="js/components.js"></script>
 </body>
 
 </html>

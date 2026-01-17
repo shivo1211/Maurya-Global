@@ -55,9 +55,10 @@ const footerTemplate = `
 
 // Load components when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    // Inject header
+    // Inject header only if not already present inline (performance optimization)
     const headerPlaceholder = document.getElementById('header-placeholder');
-    if (headerPlaceholder) {
+    const existingHeader = document.getElementById('header');
+    if (headerPlaceholder && !existingHeader) {
         headerPlaceholder.innerHTML = headerTemplate;
     }
 
