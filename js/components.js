@@ -48,7 +48,7 @@ const footerTemplate = `
         </div>
     </div>
     <div class="footer-bottom">
-        <p>&copy; 2026 Maurya Global Export Company. All rights reserved.</p>
+        <p>&copy; 2026 Maurya Global Export Company. All rights reserved. Design by <a href="https://shivo1211.me/" target="_blank" style="color: inherit; text-decoration: none;">SHIVAM GUPTA</a></p>
     </div>
 </footer>
 `;
